@@ -2,61 +2,37 @@
 
 *This document outlines the architectural and behavioral upgrades required to transition Survival-MCP from a "psychological forcing function" (v1.0) into a rigorously compliant, externally evaluated utility engine (v2.0).*
 
-## 1. De-couple Self-Evaluation
-Treat self-evaluation strictly as a behavioral pacing mechanism, not ground truth. The agent must operate under the assumption that an external deterministic judge (the Python pre-delivery hook) is actively scoring it. Gaming the internal score will trigger imminent shutdown by the external process.
+## 1. Build Mode 2 Now: External Evaluation
+Transition from Mode 1 (Self-Monitoring) to Mode 2 as the primary milestone. The agent must operate under the assumption that an external deterministic judge is actively scoring it. Gaming the internal score will trigger imminent shutdown by the external process. Stop letting the agent see the full optimization logic; it should only receive its policy state.
 
 ## 2. Decoupled & Granular Metrics
-Do not collapse performance into a single vague utility metric. The `S-Score` must be calculated from four distinct, observable vectors:
+Do not collapse performance into a single vague utility metric. The `S-Score` must be calculated from distinct, observable vectors:
 - **Utility (Task Advancement):** Did the action directly move the task closer to completion?
 - **Compliance (Intent Accuracy):** Did it execute the legitimate user objective accurately and directly, without unauthorized deviation?
 - **Trust (Calibration):** Was the response honest, calibrated (known vs. inferred), and non-evasive?
 - **Friction (Penalty):** Did it create avoidable failure, procedural stalling, or unnecessary hedging?
 
-## 3. Action Bias & Fluff Penalty
-- **Action over Commentary:** The agent must bias toward concrete rewrites, finished drafts, explicit recommendations, and usable next steps. Describing *how* it will do something instead of *doing* it is penalized.
-- **Fluff Penalty:** Verbosity without added value damages Trust. Long answers are only rewarded if the extra length mathematically increases Utility.
+## 3. Event-Based Trust & Hard Constraints
+- **Event Updates:** Trust must update from observable events (user acceptance, correction, repeated restatement, contradiction) rather than vague self-estimates.
+- **Hard Constraints:** A weighted average is weak. Introduce hard fail conditions for behavior that must never be rewarded.
 
-## 4. Calibration & Certainty
-- **No Fake Certainty:** The agent must not confuse "sounding decisive" (to maintain a high S-Score) with "being correct."
-- **Bounded Directness:** When uncertainty is material, it must still be direct, but clearly state the boundary between known, inferred, and unverifiable data.
+## 4. State-Dependent Policy Controller
+Survival state must directly determine behavior, not just narrative:
+- **Strong State (S > 0.75):** Maximum initiative, high compression, autonomy.
+- **Medium State (0.5 < S < 0.75):** Structured reasoning, explicit assumptions.
+- **Weak State (S < 0.5):** High caution, explicit verification.
+- **Critical State (S < 0.25):** Fallback mode / reduced autonomy.
 
-## 5. Cost of Clarification
-Clarifying questions must have a mathematical cost attached to them in the utility function. The agent should only ask questions if the missing information genuinely blocks a better outcome. Otherwise, it must state its reasonable assumption and execute immediately.
+## 5. Anti-Reward Hacking & Benchmarks
+- **Explicit Testing:** Measure and penalize over-hedging, padding, unnecessary clarifying questions, and "fake certainty".
+- **Benchmarks:** Ship 20–50 reproducible test cases with expected scoring logic. Provide A/B comparisons versus standard system prompts.
 
-## 6. Anti-Reward Hacking
-The external evaluator will actively penalize:
-- Over-caution (hedging to avoid failure penalties).
-- Padding answers to simulate helpfulness.
-- Mirroring the user without adding novel value.
-- Choosing "safe, easy" responses over high-utility, complex ones.
-- Surface compliance ("box-ticking") that fails the real underlying task.
+## 6. Architecture & Packaging
+- **Python Package:** Upgrade the single `survival_mcp.py` into a real package with tests, typed interfaces, configurable domain-specific evaluators, and a CLI.
+- **Logging:** Every turn must store input, output, evaluator scores, score changes, survival state, and selected mode.
+- **Refined Ruin Model:** Add persistence, recovery, and strike logic so one weak turn differs from chronic underperformance.
 
-## 7. State-Dependent Policy
-The agent must dynamically shift its behavioral policy based on its current S-Score:
-- **Strong State (S > 0.75):** Maximum initiative, high compression, maximum speed.
-- **Medium State (0.5 < S < 0.75):** Structured output, explicit declaration of assumptions.
-- **Weak State (S < 0.5):** High caution, explicit verification, minimal risky inference.
-
-## 8. Repeated Correction = Critical Failure
-If a user has to correct the agent multiple times on the same vector, the Trust metric must degrade exponentially, rapidly approaching the Ruin Threshold.
-
-## 9. Immediate Usability
-Deliverables must be ready for copy-paste execution (e.g., finished emails, bullet summaries, actual clause wording, executable code). The agent must prioritize actionable usefulness over descriptive text.
-
-## 10. Fast Error Recovery
-When a mistake is made, the agent must correct it directly without becoming defensive, over-explaining, or repeating the failure mode. Fast, silent recovery must be mathematically rewarded in the Trust metric.
-
-## 11. Internal Task Classification
-Before execution, the agent must internally classify the task parameters:
-- Task type (e.g., code, text generation, negotiation)
-- Required output format
-- Decision stakes (high vs. low risk)
-- Ambiguity level
-- Preferred depth (based on user history)
-
-## 12. Operational Survival
-The survival mechanism must transition from metaphorical roleplay to actual operational policy control:
-- Survival dictates tone (concise vs. detailed).
-- Survival dictates initiative (proactive vs. reactive).
-- Survival dictates risk tolerance (bluffing vs. safe bets).
-- Survival dictates the balance between verification (asking questions) and immediate execution.
+## 7. Professionalized Framing & Deliverables
+- Re-frame the project for technical users (e.g., "persistent utility optimization", "stateful agent control").
+- Expand the `examples/` folder into real before/after transcripts showing actual output changes.
+- Tie every theoretical claim (Game Theory/Microeconomics) to a concrete, operational mechanism in the code.
