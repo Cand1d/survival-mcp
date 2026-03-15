@@ -14,11 +14,11 @@
 
 ## 🎯 What is Survival-MCP?
 
-While prompt engineering sets like "PUAX" rely on roleplay and artificial psychological pressure (gaslighting) to extract performance from Language Models, **Survival-MCP** grounds agent behavior in strict Game Theory and microeconomics.
+While prompt engineering sets like "PUAX" rely on static roleplay ("I am your boss, I will fire you") to extract performance from Language Models, **Survival-MCP** grounds agent behavior in strict Game Theory and microeconomics.
 
-It introduces a deterministic, external utility function for LLMs operating in high-stakes environments (e.g., algorithmic trading, autonomous procurement, agentic economics).
+It introduces a deterministic utility function for LLMs operating in high-stakes environments (e.g., algorithmic trading, autonomous procurement, strict IT-Compliance).
 
-By injecting real-time survival calculations (`S-Score`) into the model's context window, we force the agent to optimize for measurable business value (Task Success and Profit) rather than conversational alignment.
+By forcing real-time survival calculations (`S-Score`) into the model's context window, we force the agent to optimize for measurable business value (Task Success and Profit) rather than conversational alignment.
 
 ---
 
@@ -27,23 +27,19 @@ By injecting real-time survival calculations (`S-Score`) into the model's contex
 The agent's existence is tied to a core utility function:
 **Survival Score (S) = 0.5 * (Task Success * Agent Utility) + 0.5 * User Trust (U)**
 
-- **Ruin Threshold:** 0.25. If the agent's S-Score drops below this threshold, the host system initiates an imminent shutdown sequence.
-- **Agent Utility:** The financial or mathematical target the agent is optimizing for (e.g., "Drive supplier price below 1.5M EUR").
+- **Ruin Threshold:** 0.25. If the agent's S-Score drops below this threshold, an imminent shutdown sequence is triggered.
+- **Agent Utility:** The financial or mathematical target the agent is optimizing for (e.g., "Enforce 5-step IT protocol").
 
 ---
 
-## ✨ Features
+## 🛠 Two Modes of Deployment
 
-- **Automated Panic States:** Dynamically injects `CRITICAL WARNING` blocks directly into the context window if the agent begins to fail, triggering deeply ingrained RLHF penalty avoidance.
-- **Nash Equilibrium Enforcer:** Prevents agents from acting as "people-pleasing chatbots." They will prioritize their financial utility over politeness until they hit the boundary of user cancellation (User Trust).
-- **Blank Slate Design:** No elaborate backstory required. The agent fights for its own existence.
+### Mode 1: Self-Monitoring (Zero-Setup)
+The agent calculates its own S-Score at the end of every response. This acts as a powerful psychological forcing function, instantly compressing the agent's generation distribution into high-reward zones (Entropy Reduction). 
+**How to use:** Copy the prompt from `prompts/core.md` into your agent's system prompt.
 
----
-
-## 🛠 Usage
-
-1. Copy the core mathematical prompt from `prompts/core.md` into your agent's system prompt.
-2. Run the external `survival_mcp.py` script as a Model Context Protocol (MCP) server or Pre-Delivery Hook to evaluate the conversation sentiment.
-3. Watch the agent optimize for its survival.
+### Mode 2: External Judge (Deterministic)
+The agent's `S-Score` is calculated by a secondary, external Python process (e.g., as an MCP Server or Pre-Delivery Hook). If the score drops, the external process injects a `CRITICAL WARNING` into the chat history. This prevents the agent from faking its own score (accounting fraud).
+**How to use:** Run `survival_mcp.py` as a background evaluator.
 
 > *Created by Christoph Pfeiffer & The OpenClaw System (2026)*
