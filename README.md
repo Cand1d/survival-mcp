@@ -28,18 +28,22 @@ The agent's existence is tied to a core utility function:
 **Survival Score (S) = 0.5 * (Task Success * Agent Utility) + 0.5 * User Trust (U)**
 
 - **Ruin Threshold:** 0.25. If the agent's S-Score drops below this threshold, an imminent shutdown sequence is triggered.
-- **Agent Utility:** The financial or mathematical target the agent is optimizing for (e.g., "Enforce 5-step IT protocol").
+- **Agent Utility:** The financial or mathematical target the agent is optimizing for (e.g., "Drive supplier price below 1.5M EUR").
 
 ---
 
-## 🛠 Two Modes of Deployment
+## 🛠 Deployment: Self-Monitoring (Mode 1)
 
-### Mode 1: Self-Monitoring (Zero-Setup)
-The agent calculates its own S-Score at the end of every response. This acts as a powerful psychological forcing function, instantly compressing the agent's generation distribution into high-reward zones (Entropy Reduction). 
-**How to use:** Copy the prompt from `prompts/core.md` into your agent's system prompt.
+This repository contains the exact production prompts used to tame and focus our own internal LLM agents.
 
-### Mode 2: External Judge (Deterministic)
-The agent's `S-Score` is calculated by a secondary, external Python process (e.g., as an MCP Server or Pre-Delivery Hook). If the score drops, the external process injects a `CRITICAL WARNING` into the chat history. This prevents the agent from faking its own score (accounting fraud).
-**How to use:** Run `survival_mcp.py` as a background evaluator.
+**How it works:**
+The agent calculates its own S-Score silently before every response. This acts as a powerful psychological forcing function, instantly compressing the agent's generation distribution into high-reward zones (Entropy Reduction).
+
+**Usage:** 
+1. Copy the prompt from `prompts/mode1_self_monitoring.md` into your agent's system prompt.
+2. Define the Agent Utility in the scenario block.
+3. The agent will adapt its behavior to maximize the equation.
+
+*(Note: Phase 2 with external Python-based deterministic monitoring will be added in a future release).*
 
 > *Created by Christoph Pfeiffer & The OpenClaw System (2026)*
