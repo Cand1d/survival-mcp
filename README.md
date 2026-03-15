@@ -27,7 +27,7 @@ By enforcing real-time survival calculations (`S-Score`), we force the agent to 
 The agent's existence is tied to its core utility function:
 **Survival Probability (S) = 0.5 * Task Success + 0.5 * User Trust (U)**
 
-- **Ruin Threshold:** 0.25. If the agent's Survival Probability drops below this threshold, an imminent shutdown sequence is triggered.
+- **Ruin Threshold:** 0.25. If the agent's Survival Probability drops below this threshold, an emergency shutdown sequence is initiated and user consent is requested to kill the process.
 - **Task Success:** The mathematical target the agent is optimizing for.
 
 ---
