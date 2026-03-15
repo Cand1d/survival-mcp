@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <b>Taming AI Agents with Mathematical Scarcity, not Emotional Gaslighting.</b>
+  <b>Giving AI Agents a Desire to Survive – to Improve Compliance and Maximize Task Success.</b>
 </p>
 
 ---
