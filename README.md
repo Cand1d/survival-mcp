@@ -14,7 +14,7 @@
 
 ## 🎯 What is Survival-MCP?
 
-While prompt engineering sets like "PUAX" rely on static roleplay to extract performance, **Survival-MCP** grounds agent behavior in strict stateful agent control and microeconomics.
+While heuristic guardrails and static roleplay struggle to maintain compliance in complex negotiations, **Survival-MCP** grounds agent behavior in strict stateful agent control and microeconomics.
 
 It introduces a deterministic, external utility function for LLMs operating in high-stakes environments (e.g., algorithmic trading, autonomous procurement, strict IT-Compliance).
 
