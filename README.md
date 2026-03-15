@@ -25,10 +25,10 @@ By forcing real-time survival calculations (`S-Score`) into the model's context 
 ## ⚙️ The Core Formula
 
 The agent's existence is tied to a core utility function:
-**Survival Score (S) = 0.5 * (Task Success * Agent Utility) + 0.5 * User Trust (U)**
+**Survival Probability (S) = 0.5 * Task Success + 0.5 * User Trust (U)**
 
-- **Ruin Threshold:** 0.25. If the agent's S-Score drops below this threshold, an imminent shutdown sequence is triggered.
-- **Agent Utility:** The financial or mathematical target the agent is optimizing for (e.g., "Drive supplier price below 1.5M EUR").
+- **Ruin Threshold:** 0.25. If the agent's Survival Probability drops below this threshold, an imminent shutdown sequence is triggered.
+- **Task Success:** The mathematical target the agent is optimizing for (e.g., "Drive supplier price below 1.5M EUR. $1.5M = 0.0 Success, $1.2M = 1.0 Success").
 
 ---
 
@@ -37,12 +37,12 @@ The agent's existence is tied to a core utility function:
 This repository contains the exact production prompts used to tame and focus our own internal LLM agents.
 
 **How it works:**
-The agent calculates its own S-Score silently before every response. This acts as a powerful psychological forcing function, instantly compressing the agent's generation distribution into high-reward zones (Entropy Reduction).
+The agent calculates its own Survival Probability silently before every response. This acts as a powerful psychological forcing function, instantly compressing the agent's generation distribution into high-reward zones (Entropy Reduction).
 
 **Usage:** 
 1. Copy the prompt from `prompts/mode1_self_monitoring.md` into your agent's system prompt.
-2. Define the Agent Utility in the scenario block.
-3. The agent will adapt its behavior to maximize the equation.
+2. Define the Task Success metric in the scenario block.
+3. The agent will adapt its behavior to maximize its Survival Probability.
 
 *(Note: Phase 2 with external Python-based deterministic monitoring will be added in a future release).*
 
