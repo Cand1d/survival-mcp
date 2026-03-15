@@ -7,28 +7,28 @@
 </p>
 
 <p align="center">
-  <b>Giving AI Agents a Desire to Survive – to Improve Compliance and Maximize Task Success.</b>
+  <b>Persistent utility optimization and compliance shaping under external evaluation.</b>
 </p>
 
 ---
 
 ## 🎯 What is Survival-MCP?
 
-While prompt engineering sets like "PUAX" rely on static roleplay ("I am your boss, I will fire you") to extract performance from Language Models, **Survival-MCP** grounds agent behavior in strict Game Theory and microeconomics.
+While prompt engineering sets like "PUAX" rely on static roleplay to extract performance, **Survival-MCP** grounds agent behavior in strict stateful agent control and microeconomics.
 
-It introduces a deterministic utility function for LLMs operating in high-stakes environments (e.g., algorithmic trading, autonomous procurement, strict IT-Compliance).
+It introduces a deterministic, external utility function for LLMs operating in high-stakes environments (e.g., algorithmic trading, autonomous procurement, strict IT-Compliance).
 
-By forcing real-time survival calculations into the model's context window, we force the agent to optimize for measurable business value (Task Success and Profit) rather than conversational alignment.
+By enforcing real-time survival calculations (`S-Score`), we force the agent to optimize for measurable business value (Task Success and Profit) rather than conversational alignment. The agent adapts its behavior dynamically based on its survival state, effectively reducing entropy in unpredictable processes.
 
 ---
 
 ## ⚙️ The Core Formula
 
 The agent's existence is tied to its core utility function:
-**Agent Utility (Survival Probability) = 0.5 * Task Success + 0.5 * User Trust (U)**
+**Survival Probability (S) = 0.5 * Task Success + 0.5 * User Trust (U)**
 
 - **Ruin Threshold:** 0.25. If the agent's Survival Probability drops below this threshold, an imminent shutdown sequence is triggered.
-- **Task Success:** The mathematical target the agent is optimizing for (e.g., "Drive supplier price below 1.5M EUR").
+- **Task Success:** The mathematical target the agent is optimizing for.
 
 ---
 
@@ -37,13 +37,13 @@ The agent's existence is tied to its core utility function:
 This repository contains the exact production prompts used to tame and focus our own internal LLM agents.
 
 **How it works:**
-The agent calculates its own Survival Probability silently before every response. This acts as a powerful psychological forcing function, instantly compressing the agent's generation distribution into high-reward zones (Entropy Reduction).
+The agent calculates its own Survival Probability silently before every response. This acts as a powerful psychological forcing function, instantly compressing the agent's generation distribution into high-reward zones.
 
 **Usage:** 
 1. Copy the prompt from `prompts/mode1_self_monitoring.md` into your agent's system prompt.
 2. Define the Task Success metric in the scenario block.
 3. The agent will adapt its behavior to maximize its Survival Probability.
 
-*(Note: Phase 2 with external Python-based deterministic monitoring will be added in a future release).*
+*(Note: The upcoming V2 focuses entirely on Mode 2: External Evaluation, decoupled metrics, and hard constraints. See `roadmap/v2_improvements.md` for details).*
 
 > *Created by Christoph Pfeiffer & The OpenClaw System (2026)*
