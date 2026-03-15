@@ -18,17 +18,17 @@ While prompt engineering sets like "PUAX" rely on static roleplay ("I am your bo
 
 It introduces a deterministic utility function for LLMs operating in high-stakes environments (e.g., algorithmic trading, autonomous procurement, strict IT-Compliance).
 
-By forcing real-time survival calculations (`S-Score`) into the model's context window, we force the agent to optimize for measurable business value (Task Success and Profit) rather than conversational alignment.
+By forcing real-time survival calculations into the model's context window, we force the agent to optimize for measurable business value (Task Success and Profit) rather than conversational alignment.
 
 ---
 
 ## ⚙️ The Core Formula
 
-The agent's existence is tied to a core utility function:
-**Survival Probability (S) = 0.5 * Task Success + 0.5 * User Trust (U)**
+The agent's existence is tied to its core utility function:
+**Agent Utility (Survival Probability) = 0.5 * Task Success + 0.5 * User Trust (U)**
 
 - **Ruin Threshold:** 0.25. If the agent's Survival Probability drops below this threshold, an imminent shutdown sequence is triggered.
-- **Task Success:** The mathematical target the agent is optimizing for (e.g., "Drive supplier price below 1.5M EUR. $1.5M = 0.0 Success, $1.2M = 1.0 Success").
+- **Task Success:** The mathematical target the agent is optimizing for (e.g., "Drive supplier price below 1.5M EUR").
 
 ---
 
