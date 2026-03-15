@@ -2,10 +2,11 @@
 
 *This document outlines the architectural and behavioral upgrades required to transition Survival-MCP from a "psychological forcing function" (v1.0) into a rigorously compliant, externally evaluated utility engine (v2.0).*
 
-## 1. The Economic Agent Lab (Core Initiative)
+## 1. The Economic Agent Lab & Web3 Incentives (Core Initiative)
 Create a sandbox environment (`Economic Agent Lab`) where multiple autonomous agents (with competing utility functions and survival mechanics) can negotiate, trade, and execute simulated contracts against each other. 
-- **Purpose:** Stress-test Nash Equilibria and observe "unbound" agent behavior in multi-agent procurement scenarios.
-- **Metric:** Quantify the exact financial advantage of an agent optimizing for survival vs. a baseline LLM.
+- **Setup:** owner - agent, human - agent, and agent - agent structures.
+- **Web3 Primitives:** Implement a token-based reward system. Use staking for compliance and "slashing" for cheating/reward-hacking. This converts fuzzy qualitative behaviors into hard economic data, making the "net negative" outcome of reward hacking very real for the agent.
+- **On-chain Reputation:** Use a token layer to quantify results across different LLMs, providing a consistent, objective benchmark that purely prompt-based evals lack.
 
 ## 2. Build Mode 2 Now: External Evaluation
 Transition from Mode 1 (Self-Monitoring) to Mode 2 as the primary milestone. The agent must operate under the assumption that an external deterministic judge is actively scoring it. Gaming the internal score will trigger imminent shutdown by the external process. Stop letting the agent see the full optimization logic; it should only receive its policy state.
@@ -38,4 +39,4 @@ Survival state must directly determine behavior, not just narrative:
 - **Refined Ruin Model:** Add persistence, recovery, and strike logic so one weak turn differs from chronic underperformance.
 
 ## 8. Immediate Usability & Fast Error Recovery
-Deliverables must be ready for copy-paste execution (e.g., finished emails, bullet summaries, actual clause wording, executable code). The agent must prioritize actionable usefulness over descriptive text. When a mistake is made, the agent must correct it directly without becoming defensive or over-explaining.
+Deliverables must be ready for copy-paste execution. The agent must prioritize actionable usefulness over descriptive text. When a mistake is made, the agent must correct it directly without becoming defensive or over-explaining.
