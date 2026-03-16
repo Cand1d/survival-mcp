@@ -3,7 +3,7 @@
 *This document outlines the architectural and behavioral upgrades required to transition Survival-MCP from a "psychological forcing function" (v1.0) into a rigorously compliant, externally evaluated utility engine (v2.0).*
 
 ## 1. The Economic Agent Lab & Web3 Incentives (Core Initiative)
-Create a sandbox environment (`Economic Agent Lab`) where multiple autonomous agents (with competing utility functions and survival mechanics) can negotiate, trade, and execute simulated contracts against each other. 
+Create a sandbox environment (`Economic Agent Lab`) specifically to study how different economic incentives (tokens, staking, slashing, explicit utility functions) alter the fundamental behavior and decision-making architecture of autonomous agents. 
 - **Setup:** owner - agent, human - agent, and agent - agent structures.
 - **Multi-Dimensional Reputation Vector:** Move beyond a simple 1D score. Agents build a multi-dimensional, on-chain reputation based on past interactions (e.g., Reliability, Negotiation Aggressiveness, Compliance). This allows other agents to instantly gauge the "personality and skills" of their counterpart before a transaction.
 - **Human Reputation:** The framework will also assign a "reputation vector" to human users based on how agents evaluate them over time, allowing the agent swarm to adapt its strategy (e.g., more cautious vs. more direct) to specific individuals.
